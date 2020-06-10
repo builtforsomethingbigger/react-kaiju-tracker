@@ -8,21 +8,59 @@ import TickerContainer from './TickerContainer'
 import * as requests from './requests'
 // Read the README for how to fetch
 
+// const API = 'http://localhost:3000/kaijus'
+
 class KaijuContainer extends React.Component {
 
   state = {
-    kaijus: []
+    kaijus: [],
+    searchInput: ''
+  }
+
+  componentDidMount(){
+    this.renderKaijus()
+  }
+
+  renderKaijus = () => {
+    requests.fetchKaijus()
+    .then(kaijus => this.setState({ kaijus }))
+  }
+
+  // submitHandler = (e, kaiju) => {
+  //   if(this.state.kaijus === kaiju){
+  //     e.preventDefault()
+
+  //     console.log(kaiju)
+  //   }
+  // }
+
+  changeHandler = e => {
+    this.setState({
+      searchInput: e.target.value
+    })
+  }
+
+  filterKaijus = () => {
+    const kaijus = [...this.state.kaijus]
+    const search = this.state.searchInput.toLowerCase()
+    return kaijus.filter(kaiju => {
+      let power = kaiju.power.toLowerCase()
+      return power.includes(search)
+    })
   }
 
   render() {
+    // console.log(this.state.kaijus)
     return (
       <>
 
-        <CreateKaijuForm />
+        <CreateKaijuForm onSubmit={this.renderKaijus} />
+
+        <input onChange={this.changeHandler} value={this.state.searchInput} />
 
         <div id='kaiju-container'>
 
-          {/* Kaiju cards should go in here! */}
+          {this.filterKaijus().map(kaiju => <KaijuCard key={kaiju.id} {...kaiju} onSubmit={this.renderKaijus}/>)}
 
         </div>
 

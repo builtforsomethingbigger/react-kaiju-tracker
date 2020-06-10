@@ -23,6 +23,12 @@
       "name": "Gidorah",
       "power": "Lightning breath",
       "image": "https://i.ebayimg.com/images/g/kskAAOSwp2VdldA4/s-l640.jpg"
+    },
+    {
+      "name": "VoltronX",
+      "power": "Blazing Swords",
+      "image": "https://cdn.wallpapersafari.com/11/10/R9KMup.jpg",
+      "id": 5
     }
   ],
   "sightings": [
@@ -31,6 +37,18 @@
       "kaijuId": 1,
       "location": "Tokyo",
       "description": "Oh no! There goes Tokyo! Go go Godzilla!"
+    },
+    {
+      "id": 2,
+      "kaijuId": 2,
+      "location": "New York",
+      "description": "Oh no! There goes New York! Go go Mothra!"
+    },
+    {
+      "id": 3,
+      "kaijuId": 1,
+      "location": "Paris",
+      "description": "Oh no! There goes Paris! Go go Godzilla!"
     }
   ]
 }
